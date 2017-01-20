@@ -1,2 +1,7 @@
 Otro planeta, junto a la tierra, blabla josue
 Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
+blabla bla blblblbll esta es la tercera linea
+ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+
+Esta es la primer linea de el segundo párrafo, agregada en una 4a edición (3a en realidad (git diff HEAD~1 mars.txt).
+
