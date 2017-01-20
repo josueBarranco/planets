@@ -1,0 +1,199 @@
+tib@nnb:~$ pwd
+/home/tib
+tib@nnb:~$ git config --global user.name "josue"
+tib@nnb:~$ git config --global user.email "josuebarranco@gmail.com"
+tib@nnb:~$ git config --global color.ui "auto"
+tib@nnb:~$ git config --list
+user.name=josue
+user.email=josuebarranco@gmail.com
+color.ui=auto
+tib@nnb:~$ mkdir planets
+tib@nnb:~$ cd planets
+tib@nnb:~/planets$ git init
+Initialized empty Git repository in /home/tib/planets/.git/
+tib@nnb:~/planets$ ls
+tib@nnb:~/planets$ ls -a
+.  ..  .git
+tib@nnb:~/planets$ mkdir moons
+tib@nnb:~/planets$ cd moons
+tib@nnb:~/planets/moons$ cd -
+/home/tib/planets
+tib@nnb:~/planets$ pwd
+/home/tib/planets
+tib@nnb:~/planets$ ^C
+tib@nnb:~/planets$ pwd
+/home/tib/planets
+tib@nnb:~/planets$ clear
+Cambios no preparados para el commit:
+  (use «git add <archivo>...» para actualizar lo que se confirmará)
+  (use «git checkout -- <archivo>...» para descartar cambios en el directorio de trabajo)
+
+	modificado:    mars.txt
+
+no hay cambios agregados al commit (use «git add» o «git commit -a»)
+tib@nnb:~/planets$ git diff
+diff --git a/mars.txt b/mars.txt
+index 94b57a5..4f30932 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1 @@
+-Otro planeta, junto a la tierra, blabla
++Otro planeta, junto a la tierra, blabla josue
+tib@nnb:~/planets$ git commit -m "Este es el segundo comentario"
+En la rama master
+Cambios no preparados para el commit:
+	modificado:    mars.txt
+
+no hay cambios agregados al commit
+tib@nnb:~/planets$ git add mars.txt
+tib@nnb:~/planets$ git commit -m "Este es el segundo comentario"
+[master 20edf19] Este es el segundo comentario
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+tib@nnb:~/planets$ ^C
+tib@nnb:~/planets$ git diff
+diff --git a/mars.txt b/mars.txt
+index 4f30932..572d12a 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,2 @@
+ Otro planeta, junto a la tierra, blabla josue
++Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
+tib@nnb:~/planets$ git add mars.txt
+tib@nnb:~/planets$ git commit -m "Este es el te tercer comentario, aqui agregue una segunda linea al texto"
+[master c86983d] Este es el te tercer comentario, aqui agregue una segunda linea al texto
+ 1 file changed, 1 insertion(+)
+tib@nnb:~/planets$ git log
+commit c86983da52a27a8619b0e295c61c03a477359ee4
+Author: josue <josuebarranco@gmail.com>
+Date:   Fri Jan 20 10:15:53 2017 -0600
+
+    Este es el te tercer comentario, aqui agregue una segunda linea al texto
+
+commit 20edf1903d5d8c559ae6443e9b847ba026d2cc25
+Author: josue <josuebarranco@gmail.com>
+Date:   Fri Jan 20 10:09:47 2017 -0600
+
+    Este es el segundo comentario
+
+commit b45948d15d3383a515312b32d62a4e9a5ee94877
+Author: josue <josuebarranco@gmail.com>
+Date:   Fri Jan 20 09:56:42 2017 -0600
+
+    Estas es la primer version donde solo agregue la palabra josue
+tib@nnb:~/planets$ git log -
+fatal: argumento no reconocido: -
+tib@nnb:~/planets$ git log -2
+commit c86983da52a27a8619b0e295c61c03a477359ee4
+Author: josue <josuebarranco@gmail.com>
+Date:   Fri Jan 20 10:15:53 2017 -0600
+
+    Este es el te tercer comentario, aqui agregue una segunda linea al texto
+
+commit 20edf1903d5d8c559ae6443e9b847ba026d2cc25
+Author: josue <josuebarranco@gmail.com>
+Date:   Fri Jan 20 10:09:47 2017 -0600
+
+    Este es el segundo comentario
+tib@nnb:~/planets$ git log --online
+fatal: argumento no reconocido: --online
+tib@nnb:~/planets$ git log --oneline
+c86983d Este es el te tercer comentario, aqui agregue una segunda linea al texto
+20edf19 Este es el segundo comentario
+b45948d Estas es la primer version donde solo agregue la palabra josue
+tib@nnb:~/planets$ ^C
+tib@nnb:~/planets$ 
+tib@nnb:~/planets$ cat mars.txt 
+Otro planeta, junto a la tierra, blabla josue
+Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
+blabla bla blblblbll esta es la tercera linea
+ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+tib@nnb:~/planets$ git diff HEAD~1 mars.txt
+diff --git a/mars.txt b/mars.txt
+index 4f30932..2514bd2 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Otro planeta, junto a la tierra, blabla josue
++Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
++blabla bla blblblbll esta es la tercera linea
++ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+tib@nnb:~/planets$ git diff HEAD~2 mars.txt
+diff --git a/mars.txt b/mars.txt
+index 94b57a5..2514bd2 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+-Otro planeta, junto a la tierra, blabla
++Otro planeta, junto a la tierra, blabla josue
++Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
++blabla bla blblblbll esta es la tercera linea
++ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+tib@nnb:~/planets$ git diff HEAD~0 mars.txt
+diff --git a/mars.txt b/mars.txt
+index 572d12a..2514bd2 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,4 @@
+ Otro planeta, junto a la tierra, blabla josue
+ Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
++blabla bla blblblbll esta es la tercera linea
++ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+tib@nnb:~/planets$ git diff HEAD~3 mars.txt
+fatal: ambiguous argument 'HEAD~3': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+tib@nnb:~/planets$ git diff 20edf1903d5d8c559ae6443e9b847ba026d2cc25 mars.txt
+diff --git a/mars.txt b/mars.txt
+index 4f30932..2514bd2 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Otro planeta, junto a la tierra, blabla josue
++Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
++blabla bla blblblbll esta es la tercera linea
++ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+tib@nnb:~/planets$ git diff 20e mars.txt
+fatal: ambiguous argument '20e': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+tib@nnb:~/planets$ git diff 20edf1903d mars.txt
+diff --git a/mars.txt b/mars.txt
+index 4f30932..2514bd2 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Otro planeta, junto a la tierra, blabla josue
++Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
++blabla bla blblblbll esta es la tercera linea
++ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+tib@nnb:~/planets$ git diff 26d2cc25 mars.txt
+fatal: ambiguous argument '26d2cc25': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+tib@nnb:~/planets$ cat mars.txt 
+Otro planeta, junto a la tierra, blabla josue
+Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
+blabla bla blblblbll esta es la tercera linea
+ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
+
+Esta es la primer linea de el segundo párrafo, agregada en una 4a edición (3a en realidad (git diff HEAD~1 mars.txt).
+
+tib@nnb:~/planets$ git diff
+diff --git a/mars.txt b/mars.txt
+index 572d12a..d904a30 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,7 @@
+ Otro planeta, junto a la tierra, blabla josue
+ Esta es la segunda linea, agregada en una tercera edición, (1a cree el archivo, 2a josue, 3a esta linea)
++blabla bla blblblbll esta es la tercera linea
++ideijdejdijedije esta es la cuarta linea, que fue agregada junto con la tercera
++
++Esta es la primer linea de el segundo párrafo, agregada en una 4a edición (3a en realidad (git diff HEAD~1 mars.txt).
++
+tib@nnb:~/planets$ git add mars.txt
+tib@nnb:~/planets$ git commit -m "Este es el te cuarto comentario, aqui agregue una primer linea de un segundo parrafo"
+[master b48e77c] Este es el te cuarto comentario, aqui agregue una primer linea de un segundo parrafo
+ 1 file changed, 5 insertions(+)
+tib@nnb:~/planets$ git diff
+tib@nnb:~/planets$
